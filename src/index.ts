@@ -1,3 +1,12 @@
-import { sayHello } from './lib';
+import { ControllerPort } from './application/ports/controller.port';
+import { createDiContainer } from './di.container';
+import { INJECT } from './di.tokens';
 
-sayHello();
+function start(): void {
+  const container = createDiContainer();
+
+  // start telegram container
+  container.get<ControllerPort>(INJECT.TELEGRAM_CONTROLLER).listen();
+}
+
+start();
