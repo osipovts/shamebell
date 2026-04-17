@@ -5,14 +5,16 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc && tsc-esm-fix",
     "start": "node dist/index.js",
     "dev": "tsx watch src/index.ts",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "format": "prettier --write \"src/**/*.ts\"",
-    "format:check": "prettier --check \"src/**/*.ts\""
+    "format:check": "prettier --check \"src/**/*.ts\"",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +22,8 @@
   "packageManager": "pnpm@10.28.2",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@jest/globals": "^30.3.0",
+    "@types/jest": "^30.0.0",
     "@types/node": "^25.5.0",
     "@types/node-telegram-bot-api": "^0.64.14",
     "@typescript-eslint/eslint-plugin": "^8.57.0",
@@ -27,7 +31,9 @@
     "eslint": "^10.0.3",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^17.4.0",
+    "jest": "^30.3.0",
     "prettier": "^3.8.1",
+    "ts-jest": "^29.4.6",
     "tsc-esm-fix": "^3.1.2",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
@@ -36,6 +42,7 @@
     "dotenv": "^17.3.1",
     "inversify": "^8.0.0",
     "node-telegram-bot-api": "^0.67.0",
-    "reflect-metadata": "^0.2.2"
+    "reflect-metadata": "^0.2.2",
+    "zod": "^4.3.6"
   }
 }

@@ -25,10 +25,13 @@ export default [
     rules: {
       ...tseslint.configs.recommended.rules,
 
-      '@typescript-eslint/no-unused-vars': ['warn', { 
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_' 
-      }],
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
 
       '@typescript-eslint/no-explicit-any': 'warn',
       'no-console': 'warn',
@@ -46,6 +49,16 @@ export default [
     rules: {
       'no-console': 'warn',
     },
+  },
+  {
+    overrides: [
+      {
+        files: ['*.spec.ts', '*.test.ts'],
+        env: {
+          jest: true,
+        },
+      },
+    ],
   },
   prettierConfig,
   {

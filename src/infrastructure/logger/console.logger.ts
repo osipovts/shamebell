@@ -2,7 +2,7 @@
 import { inject, injectable } from 'inversify';
 import { LoggerPort, LogLevel } from '../../application/ports/logger.port';
 import { INJECT } from '../../di.tokens';
-import { LoggerConfigPort } from '../../application/ports/config/logger-config.port';
+import { LoggerConfigPort } from '../../application/ports/configs';
 
 @injectable()
 export class ConsoleLogger implements LoggerPort {

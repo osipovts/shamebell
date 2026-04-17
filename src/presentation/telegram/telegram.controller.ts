@@ -2,9 +2,11 @@ import TelegramBot from 'node-telegram-bot-api';
 import { inject, injectable } from 'inversify';
 import { ControllerPort } from '../../application/ports/controller.port';
 import { INJECT } from '../../di.tokens';
-import { TelegramBotConfigPort } from '../../application/ports/config/telegram-bot-config.port';
+import { TelegramBotConfigPort } from '../../application/ports/configs/telegram-bot-config.port';
 import { LoggerPort } from '../../application/ports/logger.port';
 import assert from 'node:assert';
+import { MessageMapper } from '../mappers/message.mapper';
+import { AddMessageUseCase } from '../../application/usecases/add-message.use-case';
 
 @injectable()
 export class TelegramController implements ControllerPort {
@@ -13,22 +15,40 @@ export class TelegramController implements ControllerPort {
   constructor(
     @inject(INJECT.CONFIG.TELEGRAM_BOT) private readonly cfg: TelegramBotConfigPort,
     @inject(INJECT.LOGGER) private readonly logger: LoggerPort,
+    // use cases
+    @inject(AddMessageUseCase) private readonly addMessasgeUseCase: AddMessageUseCase,
   ) {
     this.logger.setContext(TelegramController.name);
   }
 
   listen(): void {
+    // create bot
     this.bot = new TelegramBot(this.cfg.token, { polling: true });
-    this.logger.info(`Bot is listening for commands`);
-    this.setupCommandHandlers();
+
+    // setup command handlers
+    this.bot.onText(/./, (msg) =>
+      this.processMessage(
+        String(msg.from?.id),
+        msg.from?.username ?? msg.from?.first_name + ' ' + msg.from?.last_name,
+        String(msg.chat.id),
+        msg.text ?? '',
+      ),
+    );
+
+    this.logger.info(`🚀 Telegram controller is ready`);
   }
 
-  private setupCommandHandlers(): void {
+  async sendMessage(to: string, message: string): Promise<void> {
     assert(this.bot !== undefined, 'Bot must be running before setup handlers');
+    await this.bot.sendMessage(to, message);
+  }
 
-    this.bot.onText(/./, (msg) => {
-      this.logger.info(`Echo ${msg.text} to ${msg.from?.id}`);
-      this.bot?.sendMessage(msg.from!.id, msg.text ?? '');
-    });
+  private processMessage(authorId: string, authorName: string, chatId: string, text: string): void {
+    try {
+      const messageDto = MessageMapper.parse({ authorId, authorName, chatId, text });
+      this.addMessasgeUseCase.execute(messageDto);
+    } catch (e: unknown) {
+      this.logger.error(e);
+    }
   }
 }

@@ -1,7 +1,7 @@
-import { LoggerConfigPort } from './config/logger-config.port';
-import { TelegramBotConfigPort } from './config/telegram-bot-config.port';
+import { LoggerConfigPort, MessageBatchConfigPort, TelegramBotConfigPort } from './configs';
 
 export interface ConfigPort {
   readonly telegramBotConfig: TelegramBotConfigPort;
   readonly loggerConfig: LoggerConfigPort;
+  readonly messageBatchConfig: MessageBatchConfigPort;
 }
