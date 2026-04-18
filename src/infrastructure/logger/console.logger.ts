@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { inject, injectable } from 'inversify';
 import { LoggerPort, LogLevel } from '../../application/ports/logger.port';
-import { INJECT } from '../../di.tokens';
+import { INJECT } from '../../composition-root/container/container.const';
 import { LoggerConfigPort } from '../../application/ports/configs';
 
 @injectable()

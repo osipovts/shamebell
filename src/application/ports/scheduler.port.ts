@@ -1,4 +1,6 @@
-export type ScheduledTask = () => void | Promise<void>;
+import { MaybeAsyncVoid } from '../../generic.types';
+
+export type ScheduledTask = () => MaybeAsyncVoid;
 
 export interface ScheduleOptions {
   name: string;

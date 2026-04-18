@@ -1,25 +1,25 @@
-import { Container, ContainerOptions, ResolutionContext } from 'inversify';
-import { INJECT } from './di.tokens';
-import { EnvConfig } from './infrastructure/config/env.config';
-import { ConfigPort } from './application/ports/config.port';
+import { ContainerOptions, Container, ResolutionContext } from 'inversify';
+import { ConfigPort } from '../../application/ports/config.port';
 import {
+  TelegramBotConfigPort,
   LoggerConfigPort,
   MessageBatchConfigPort,
-  TelegramBotConfigPort,
-} from './application/ports/configs';
-import { LoggerPort } from './application/ports/logger.port';
-import { ConsoleLogger } from './infrastructure/logger/console.logger';
-import { ControllerPort } from './application/ports/controller.port';
-import { TelegramController } from './presentation/telegram/telegram.controller';
-import { ShameAnalyzerPort } from './application/ports/shame-analyzer.port';
-import { MockShameAnalyzer } from './infrastructure/shame-analyzer/mock.shame-analyzer';
-import { EventBusPort } from './application/ports/event-bus.port';
-import { InMemoryEventBus } from './infrastructure/event-bus/in-memory.event-bus';
-import { MessageBatchRegistry } from './domain/messages/message-batch-registry';
-import { SchedulerPort } from './application/ports/scheduler.port';
-import { SimpleScheduler } from './infrastructure/scheduler/simple.scheduler';
+} from '../../application/ports/configs';
+import { ControllerPort } from '../../application/ports/controller.port';
+import { EventBusPort } from '../../application/ports/event-bus.port';
+import { LoggerPort } from '../../application/ports/logger.port';
+import { SchedulerPort } from '../../application/ports/scheduler.port';
+import { ShameAnalyzerPort } from '../../application/ports/shame-analyzer.port';
+import { MessageBatchRegistry } from '../../domain/messages/message-batch-registry';
+import { EnvConfig } from '../../infrastructure/config/env.config';
+import { InMemoryEventBus } from '../../infrastructure/event-bus/in-memory.event-bus';
+import { ConsoleLogger } from '../../infrastructure/logger/console.logger';
+import { SimpleScheduler } from '../../infrastructure/scheduler/simple.scheduler';
+import { MockShameAnalyzer } from '../../infrastructure/shame-analyzer/mock.shame-analyzer';
+import { TelegramController } from '../../presentation/telegram/telegram.controller';
+import { INJECT } from './container.const';
 
-export function createDiContainer(
+export function createContainer(
   options: ContainerOptions = { autobind: true, defaultScope: 'Singleton' },
 ): Container {
   const container = new Container(options);

@@ -1,14 +1,16 @@
-export type EventType = string; // TODO: enum or something concrete
+import { MaybeAsyncVoid, Constructor } from '../../generic.types';
 
-export interface Event {
-  readonly type: string;
-}
+export const __EVENT_BRAND = Symbol('__EVENT_BRAND');
 
-export interface EventHandler<T extends Event> {
-  handle(event: T): Promise<void>;
+export interface EventPort {
+  readonly [__EVENT_BRAND]: void; // using nominal typing to avoid inheritance
 }
 
 export interface EventBusPort {
-  publish<T extends Event>(event: T): void;
-  subscribe<T extends Event>(eventType: EventType, handler: EventHandler<T>): () => void;
+  publish(event: EventPort): MaybeAsyncVoid;
+
+  subscribe<E extends EventPort>(
+    EventClass: Constructor<E>,
+    handler: (event: E) => MaybeAsyncVoid,
+  ): void;
 }

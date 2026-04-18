@@ -1,12 +1,13 @@
 import { inject, injectable } from 'inversify';
-import { INJECT } from '../../di.tokens';
+import { INJECT } from '../../composition-root/container/container.const';
 import { MessageEntity } from '../../domain/messages/message.entity';
 import { MessageDto } from '../ports/dto/message.dto';
 import { LoggerPort } from '../ports/logger.port';
 import { MessageBatchRegistry } from '../../domain/messages/message-batch-registry';
+import { UseCasePort } from '../ports/use-case.port';
 
 @injectable()
-export class AddMessageUseCase {
+export class AddMessageUseCase implements UseCasePort {
   constructor(
     @inject(INJECT.LOGGER) private readonly logger: LoggerPort,
     @inject(MessageBatchRegistry) private readonly messages: MessageBatchRegistry,

@@ -1,5 +1,5 @@
 import { injectable, inject } from 'inversify';
-import { INJECT } from '../../di.tokens';
+import { INJECT } from '../../composition-root/container/container.const';
 import {
   MessageBatchMap,
   MessageBatchRegistry,
@@ -10,9 +10,10 @@ import { MessageBatch } from '../../domain/messages/message-batch';
 import { LoggerPort } from '../ports/logger.port';
 import { ShameEvent } from '../events/shame.event';
 import { MessageEntity } from '../../domain/messages/message.entity';
+import { UseCasePort } from '../ports/use-case.port';
 
 @injectable()
-export class AnalyzeMessagesUseCase {
+export class AnalyzeMessagesUseCase implements UseCasePort {
   constructor(
     @inject(MessageBatchRegistry) private readonly registry: MessageBatchRegistry,
     @inject(INJECT.LOGGER) private readonly logger: LoggerPort,

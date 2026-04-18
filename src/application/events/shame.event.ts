@@ -1,8 +1,8 @@
 import { MessageDto } from '../ports/dto/message.dto';
-import { Event } from '../ports/event-bus.port';
+import { __EVENT_BRAND, EventPort } from '../ports/event-bus.port';
 
-export class ShameEvent implements Event {
-  readonly type = ShameEvent.name;
+export class ShameEvent implements EventPort {
+  readonly [__EVENT_BRAND]: void = undefined;
 
   constructor(public readonly message: MessageDto) {}
 }

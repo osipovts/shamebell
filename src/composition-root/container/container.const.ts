@@ -1,5 +1,3 @@
-// TODO: rework, make structured
-// dependency injection tokens
 export const INJECT = Object.freeze({
   // infra
   CONFIG: {
