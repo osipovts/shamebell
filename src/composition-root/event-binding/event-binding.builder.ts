@@ -18,7 +18,7 @@ export class EventBindingBuilder {
     return this;
   }
 
-  register(container: Container, eventBus: EventBusPort): void {
+  build(container: Container, eventBus: EventBusPort): void {
     for (const { event: EventClass, useCase: UseCaseClass } of this.bindings) {
       const useCaseInstance = container.get<UseCasePort>(UseCaseClass);
 
