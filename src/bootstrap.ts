@@ -4,7 +4,7 @@ import { SchedulerPort } from './application/ports/scheduler.port';
 import { AnalyzeMessagesUseCase } from './application/usecases/analyze-messages.use-case';
 import { createContainer } from './composition-root/container/container';
 import { INJECT } from './composition-root/container/container.const';
-import { getEventBindings } from './composition-root/events-binding/event-binding';
+import { getEventBindings } from './composition-root/event-binding/event-binding';
 
 export function bootstrap(): void {
   const container = createContainer();
