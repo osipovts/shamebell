@@ -1,5 +1,5 @@
-import { MessageDto } from '../ports/dto/message.dto';
-import { __EVENT_BRAND, EventPort } from '../ports/event-bus.port';
+import { MessageDto } from '../dto/message.dto';
+import { __EVENT_BRAND, EventPort } from '../ports/infrastructure/event-bus.port';
 
 export class ShameEvent implements EventPort {
   readonly [__EVENT_BRAND]: void = undefined;

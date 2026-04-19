@@ -4,13 +4,13 @@ import {
   MessageBatchMap,
   MessageBatchRegistry,
 } from '../../domain/messages/message-batch-registry';
-import { ShameAnalyzerPort } from '../ports/shame-analyzer.port';
-import { EventBusPort } from '../ports/event-bus.port';
+import { ShameAnalyzerPort } from '../ports/infrastructure/shame-analyzer.port';
+import { EventBusPort } from '../ports/infrastructure/event-bus.port';
 import { MessageBatch } from '../../domain/messages/message-batch';
-import { LoggerPort } from '../ports/logger.port';
+import { LoggerPort } from '../ports/infrastructure/logger.port';
 import { ShameEvent } from '../events/shame.event';
 import { MessageEntity } from '../../domain/messages/message.entity';
-import { UseCasePort } from '../ports/use-case.port';
+import { UseCasePort } from '../ports/application/use-case.port';
 
 @injectable()
 export class AnalyzeMessagesUseCase implements UseCasePort {

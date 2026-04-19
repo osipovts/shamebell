@@ -1,9 +1,9 @@
 import { inject } from 'inversify';
 import { INJECT } from '../../composition-root/container/container.const';
-import { ControllerPort } from '../ports/controller.port';
-import { LoggerPort } from '../ports/logger.port';
-import { MessageDto } from '../ports/dto/message.dto';
-import { UseCasePort } from '../ports/use-case.port';
+import { ControllerPort } from '../ports/presentation/controller.port';
+import { LoggerPort } from '../ports/infrastructure/logger.port';
+import { MessageDto } from '../dto/message.dto';
+import { UseCasePort } from '../ports/application/use-case.port';
 import { ShameEvent } from '../events/shame.event';
 
 export class ShameUseCase implements UseCasePort<ShameEvent> {

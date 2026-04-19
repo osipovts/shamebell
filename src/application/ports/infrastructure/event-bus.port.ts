@@ -1,4 +1,4 @@
-import { MaybeAsyncVoid, Constructor } from '../../generic.types';
+import { MaybeAsyncVoid, Constructor } from '../../../generic.types';
 
 export const __EVENT_BRAND = Symbol('__EVENT_BRAND');
 

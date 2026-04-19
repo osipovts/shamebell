@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
 import { MessageEntity } from '../../domain/messages/message.entity';
-import { ShameAnalyzerPort } from '../../application/ports/shame-analyzer.port';
+import { ShameAnalyzerPort } from '../../application/ports/infrastructure/shame-analyzer.port';
 import { randomInt } from 'node:crypto';
 
 @injectable()

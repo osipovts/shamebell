@@ -5,9 +5,9 @@ import {
   ScheduledTask,
   ScheduleOptions,
   SchedulerPort,
-} from '../../application/ports/scheduler.port';
+} from '../../application/ports/infrastructure/scheduler.port';
 import { INJECT } from '../../composition-root/container/container.const';
-import { LoggerPort } from '../../application/ports/logger.port';
+import { LoggerPort } from '../../application/ports/infrastructure/logger.port';
 
 interface TaskMetaData {
   task: ScheduledTask;

@@ -1,6 +1,6 @@
 import { Container } from 'inversify';
-import { UseCasePort } from '../../application/ports/use-case.port';
-import { EventBusPort, EventPort } from '../../application/ports/event-bus.port';
+import { UseCasePort } from '../../application/ports/application/use-case.port';
+import { EventBusPort, EventPort } from '../../application/ports/infrastructure/event-bus.port';
 import { Constructor } from '../../generic.types';
 
 export class EventBindingBuilder {

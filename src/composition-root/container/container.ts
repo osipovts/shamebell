@@ -1,15 +1,15 @@
 import { ContainerOptions, Container, ResolutionContext } from 'inversify';
-import { ConfigPort } from '../../application/ports/config.port';
+import { ConfigPort } from '../../application/ports/infrastructure/config.port';
 import {
   TelegramBotConfigPort,
   LoggerConfigPort,
   MessageBatchConfigPort,
 } from '../../application/ports/configs';
-import { ControllerPort } from '../../application/ports/controller.port';
-import { EventBusPort } from '../../application/ports/event-bus.port';
-import { LoggerPort } from '../../application/ports/logger.port';
-import { SchedulerPort } from '../../application/ports/scheduler.port';
-import { ShameAnalyzerPort } from '../../application/ports/shame-analyzer.port';
+import { ControllerPort } from '../../application/ports/presentation/controller.port';
+import { EventBusPort } from '../../application/ports/infrastructure/event-bus.port';
+import { LoggerPort } from '../../application/ports/infrastructure/logger.port';
+import { SchedulerPort } from '../../application/ports/infrastructure/scheduler.port';
+import { ShameAnalyzerPort } from '../../application/ports/infrastructure/shame-analyzer.port';
 import { MessageBatchRegistry } from '../../domain/messages/message-batch-registry';
 import { EnvConfig } from '../../infrastructure/config/env.config';
 import { InMemoryEventBus } from '../../infrastructure/event-bus/in-memory.event-bus';

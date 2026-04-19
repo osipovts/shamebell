@@ -1,6 +1,9 @@
 import { Container } from 'inversify';
-import { ScheduleOptions, SchedulerPort } from '../../application/ports/scheduler.port';
-import { UseCasePort } from '../../application/ports/use-case.port';
+import {
+  ScheduleOptions,
+  SchedulerPort,
+} from '../../application/ports/infrastructure/scheduler.port';
+import { UseCasePort } from '../../application/ports/application/use-case.port';
 import { Constructor } from '../../generic.types';
 
 export class ScheduleBindingBuilder {

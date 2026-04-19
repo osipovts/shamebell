@@ -1,13 +1,13 @@
 import assert from 'node:assert';
 import 'dotenv/config';
 import { injectable } from 'inversify';
-import { ConfigPort } from '../../application/ports/config.port';
-import { isLogLevelArray } from '../../application/ports/logger.port';
+import { ConfigPort } from '../../application/ports/infrastructure/config.port';
+import { isLogLevelArray } from '../../application/ports/infrastructure/logger.port';
 import {
+  TelegramBotConfigPort,
   LoggerConfigPort,
   MessageBatchConfigPort,
-  TelegramBotConfigPort,
-} from '../../application/ports/configs';
+} from '../../application/ports/infrastructure/configs';
 
 @injectable()
 export class EnvConfig implements ConfigPort {

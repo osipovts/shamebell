@@ -1,10 +1,10 @@
 import { inject, injectable } from 'inversify';
 import { INJECT } from '../../composition-root/container/container.const';
 import { MessageEntity } from '../../domain/messages/message.entity';
-import { MessageDto } from '../ports/dto/message.dto';
-import { LoggerPort } from '../ports/logger.port';
+import { MessageDto } from '../dto/message.dto';
+import { LoggerPort } from '../ports/infrastructure/logger.port';
 import { MessageBatchRegistry } from '../../domain/messages/message-batch-registry';
-import { UseCasePort } from '../ports/use-case.port';
+import { UseCasePort } from '../ports/application/use-case.port';
 
 @injectable()
 export class AddMessageUseCase implements UseCasePort {

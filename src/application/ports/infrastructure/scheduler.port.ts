@@ -1,4 +1,4 @@
-import { MaybeAsyncVoid } from '../../generic.types';
+import { MaybeAsyncVoid } from '../../../generic.types';
 
 export type ScheduledTask = () => MaybeAsyncVoid;
 

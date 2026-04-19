@@ -1,4 +1,4 @@
-import { EventBusPort, EventPort } from '../../application/ports/event-bus.port';
+import { EventBusPort, EventPort } from '../../application/ports/infrastructure/event-bus.port';
 import { Constructor, MaybeAsyncVoid } from '../../generic.types';
 
 export class InMemoryEventBus implements EventBusPort {

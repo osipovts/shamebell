@@ -1,6 +1,6 @@
-import { ControllerPort } from './application/ports/controller.port';
-import { EventBusPort } from './application/ports/event-bus.port';
-import { SchedulerPort } from './application/ports/scheduler.port';
+import { ControllerPort } from './application/ports/presentation/controller.port';
+import { EventBusPort } from './application/ports/infrastructure/event-bus.port';
+import { SchedulerPort } from './application/ports/infrastructure/scheduler.port';
 import { createContainer } from './composition-root/container/container';
 import { INJECT } from './composition-root/container/container.const';
 import { getEventBindings } from './composition-root/event-binding/event-binding';

@@ -1,5 +1,5 @@
 import z from 'zod';
-import { MessageDto } from '../../application/ports/dto/message.dto';
+import { MessageDto } from '../../application/dto/message.dto';
 
 export const MessageMapper = z
   .object({
