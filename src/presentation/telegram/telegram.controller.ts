@@ -7,6 +7,7 @@ import { LoggerPort } from '../../application/ports/infrastructure/logger.port';
 import assert from 'node:assert';
 import { MessageMapper } from '../mappers/message.mapper';
 import { AddMessageUseCase } from '../../application/usecases/add-message.use-case';
+import { GREETING } from './telegram.const';
 
 @injectable()
 export class TelegramController implements ControllerPort {
@@ -26,6 +27,8 @@ export class TelegramController implements ControllerPort {
     this.bot = new TelegramBot(this.cfg.token, { polling: true });
 
     // setup command handlers
+    this.bot.onText(/^\/start/, (msg) => this.processStart(String(msg.from?.id)));
+
     this.bot.onText(/./, (msg) =>
       this.processMessage(
         String(msg.from?.id),
@@ -41,6 +44,10 @@ export class TelegramController implements ControllerPort {
   async sendMessage(to: string, message: string): Promise<void> {
     assert(this.bot !== undefined, 'Bot must be running before setup handlers');
     await this.bot.sendMessage(to, message);
+  }
+
+  private processStart(to: string): void {
+    this.sendMessage(to, GREETING);
   }
 
   private processMessage(authorId: string, authorName: string, chatId: string, text: string): void {
