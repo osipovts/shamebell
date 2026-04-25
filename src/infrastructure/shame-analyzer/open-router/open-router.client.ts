@@ -21,8 +21,6 @@ export class OpenRouterClient {
     const data = await response.json();
     const content = data.choices?.[0]?.message?.content;
 
-    console.dir(data, { depth: 10 });
-
     if (!content) {
       throw new Error(`Empty response from LLM: ${JSON.stringify(data)}`);
     }
