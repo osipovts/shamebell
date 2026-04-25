@@ -8,7 +8,8 @@ describe('MessageBatchRegistry', () => {
   const otherChatId = 'other-chat-id';
   const config = { countLimit: 3, timeLimit: 10 };
 
-  const createMsg = (chatId: string, text: string) => new MessageEntity('u1', chatId, text);
+  const createMsg = (chatId: string, text: string) =>
+    new MessageEntity('u1', 'User 1', chatId, text);
 
   beforeEach(() => {
     registry = new MessageBatchRegistry(config);

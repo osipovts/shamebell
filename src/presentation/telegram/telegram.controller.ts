@@ -2,7 +2,7 @@ import TelegramBot from 'node-telegram-bot-api';
 import { inject, injectable } from 'inversify';
 import { ControllerPort } from '../../application/ports/presentation/controller.port';
 import { INJECT } from '../../composition-root/container/container.const';
-import { TelegramBotConfigPort } from '../../application/ports/configs/telegram-bot-config.port';
+import { TelegramBotConfigPort } from '../../application/ports/infrastructure/configs';
 import { LoggerPort } from '../../application/ports/infrastructure/logger.port';
 import assert from 'node:assert';
 import { MessageMapper } from '../mappers/message.mapper';

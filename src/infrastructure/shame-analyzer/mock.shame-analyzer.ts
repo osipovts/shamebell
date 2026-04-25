@@ -18,6 +18,6 @@ export class MockShameAnalyzer implements ShameAnalyzerPort {
   }
 
   private shouldBeAshamed(messageEntity: MessageEntity): boolean {
-    return messageEntity.text.toLowerCase().includes('хуй');
+    return messageEntity.text.toLowerCase().includes('член');
   }
 }

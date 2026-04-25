@@ -5,6 +5,7 @@ export const INJECT = Object.freeze({
     TELEGRAM_BOT: Symbol.for('CONFIG_TELEGRAM_BOT'),
     LOGGER: Symbol.for('CONFIG_LOGGER'),
     MESSAGE_BATCH: Symbol.for('CONFIG_MESSAGE_BATCH'),
+    OPEN_ROUTER: Symbol.for('OPEN_ROUTER'),
   },
   LOGGER: Symbol.for('LOGGER'),
   SHAME_ANALYZER: Symbol.for('SHAME_ANALYZER'),
